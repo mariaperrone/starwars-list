@@ -1,6 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	const urlPers = "https://www.swapi.tech/api/people/";
-	const urlPlan = "https://www.swapi.tech/api/planets/";
+	const urlPers = "https://www.swapi.tech/api/people?page=1&limit=100";
+	const urlPlan = "https://www.swapi.tech/api/planets?page=1&limit=100";
 	return {
 		store: {
 			demo: [
@@ -19,10 +19,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			listaPlanetas: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 			loadSomeData: () => {
 				fetch(urlPers, {
 					method: "GET",
@@ -35,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(data => {
 						//Aquí es donde debe comenzar tu código después de que finalice la búsqueda
-						console.log(data); //esto imprimirá en la consola el objeto exacto recibido del servidor
+						setStore({ listaPersonajes: data.results }); //esto imprimirá en la consola el objeto exacto recibido del servidor
 					})
 					.catch(error => {
 						//manejo de errores
@@ -53,26 +49,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(data => {
 						//Aquí es donde debe comenzar tu código después de que finalice la búsqueda
-						console.log(data); //esto imprimirá en la consola el objeto exacto recibido del servidor
+						setStore({ listaPlanetas: data.results }); //esto imprimirá en la consola el objeto exacto recibido del servidor
 					})
 					.catch(error => {
 						//manejo de errores
 						alert(error);
 					});
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
 			}
 		}
 	};
