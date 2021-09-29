@@ -16,7 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			listaPersonajes: [],
-			listaPlanetas: []
+			listaPlanetas: [],
+			favorites: []
 		},
 		actions: {
 			loadSomeData: () => {
