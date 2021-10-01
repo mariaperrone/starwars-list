@@ -3,23 +3,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 	const urlPlan = "https://www.swapi.tech/api/planets?page=1&limit=100";
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			listaPersonajes: [],
 			listaPlanetas: [],
-			favorites: []
+			favorites: [],
+			character: {},
+			planet: {}
 		},
 		actions: {
+			getCharacter: id => {
+				const store = getStore();
+				fetch("https://www.swapi.tech/api/people/" + id)
+					.then(res => res.json())
+					.then(data => {
+						setStore({ character: data.result });
+					})
+					.catch(err => err);
+			},
+			getPlanet: id => {
+				fetch("https://www.swapi.tech/api/planets/" + id)
+					.then(res => res.json())
+					.then(data => {
+						setStore({ planet: data.result }); //seteamos el valor del state planet con el objeto que se encuentra en la respuesta del json.result
+					})
+					.catch(err => err);
+			},
+			isActive: item => {
+				const store = getStore();
+				if (store.favorites.includes(item)) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+
 			loadSomeData: () => {
 				fetch(urlPers, {
 					method: "GET",
@@ -56,6 +72,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 						//manejo de errores
 						alert(error);
 					});
+			},
+			setFavorites: favorite => {
+				const store = getStore();
+				if (store.favorites.includes(favorite)) {
+					getActions().removeFavorites(favorite);
+				} else {
+					setStore({ favorites: [...store.favorites, favorite] });
+				}
+			},
+			removeFavorites: favorite => {
+				const store = getStore();
+				let newList = store.favorites.filter(elem => elem != favorite);
+				setStore({ favorites: newList });
 			}
 		}
 	};

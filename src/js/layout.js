@@ -4,6 +4,9 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+import CurrentCharacter from "./views/currentCharacter";
+import CurrentPlanet from "./views/currentPlanet";
+import { Link } from "react-router-dom";
 
 //create your first component
 const Layout = () => {
@@ -17,11 +20,26 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
+						<Route exact path="/character">
+							<CurrentCharacter />
+						</Route>
+						<Route exact path="/planet">
+							<CurrentPlanet />
+						</Route>
 						<Route exact path="/">
 							<Home />
 						</Route>
+						<Route exact path="/character/:id">
+							<CurrentCharacter />
+						</Route>
+						<Route exact path="/planet/:id">
+							<CurrentPlanet />
+						</Route>
 						<Route>
-							<h1>Not found!</h1>
+							<h1>¡Página no encontrada!</h1>
+							<Link to="/">
+								<button>Volver a la página principal.</button>
+							</Link>
 						</Route>
 					</Switch>
 				</ScrollToTop>
