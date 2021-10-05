@@ -11,7 +11,6 @@ const Card = props => {
 			<img className="card-img-top" src="https://via.placeholder.com/400x200" alt="Card image cap" />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
-				<p className="card-text">{props.url}</p>
 				<div className="d-flex justify-content-between">
 					<Link to={props.link + props.uid}>
 						<button type="button" className="btn btn-outline-primary">
@@ -35,7 +34,8 @@ Card.propTypes = {
 	name: PropTypes.string,
 	url: PropTypes.string,
 	uid: PropTypes.string,
-	link: PropTypes.string
+	link: PropTypes.string,
+	description: PropTypes.string
 };
 
 export default Card;

@@ -36,10 +36,12 @@ const Layout = () => {
 							<CurrentPlanet />
 						</Route>
 						<Route>
-							<h1>¡Página no encontrada!</h1>
-							<Link to="/">
-								<button>Volver a la página principal.</button>
-							</Link>
+							<div className="text-center p-5">
+								<h1>¡Página no encontrada!</h1>
+								<Link to="/">
+									<button className="btn btn-primary">Volver a la página principal.</button>
+								</Link>
+							</div>
 						</Route>
 					</Switch>
 				</ScrollToTop>

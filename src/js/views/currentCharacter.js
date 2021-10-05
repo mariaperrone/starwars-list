@@ -26,12 +26,12 @@ const CurrentCharacter = () => {
 					<table border="0" className="text-danger fw-bold text-center mx-auto fs-5">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Birth Year</th>
-								<th>Gender</th>
-								<th>Height</th>
-								<th>Skin Color</th>
-								<th>Eye Color</th>
+								<th className="px-5 py-3">Name</th>
+								<th className="px-5 py-3">Birth Year</th>
+								<th className="px-5 py-3">Gender</th>
+								<th className="px-5 py-3">Height</th>
+								<th className="px-5 py-3">Skin Color</th>
+								<th className="px-5 py-3">Eye Color</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -22,7 +22,7 @@ const Favorites = () => {
 	const dropdownEmpty = (
 		<li>
 			<a className="dropdown-item text-center" href="#">
-				{"( empty )"}
+				Empty!
 			</a>
 		</li>
 	);

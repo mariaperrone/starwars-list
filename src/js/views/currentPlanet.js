@@ -25,12 +25,12 @@ const CurrentPlanet = () => {
 					<table border="0" className="text-danger fw-bold text-center mx-auto fs-5">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Climate</th>
-								<th>Population</th>
-								<th>Orbital Period</th>
-								<th>Rotation Period</th>
-								<th>Diameter</th>
+								<th className="px-5 py-3">Name</th>
+								<th className="px-5 py-3">Climate</th>
+								<th className="px-5 py-3">Population</th>
+								<th className="px-5 py-3">Orbital Period</th>
+								<th className="px-5 py-3">Rotation Period</th>
+								<th className="px-5 py-3">Diameter</th>
 							</tr>
 						</thead>
 						<tbody>
